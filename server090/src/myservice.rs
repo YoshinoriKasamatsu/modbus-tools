@@ -15,6 +15,7 @@ impl tokio_modbus::server::Service for ExampleService {
     type Future = future::Ready<Result<Self::Response, Self::Error>>;
 
     fn call(&self, req: Self::Request) -> Self::Future {
+        println!("SERVER: Received request: {req:?}");
         match req {
             Request::ReadInputRegisters(addr, cnt) => {
                 match crate::register_read(&self.input_registers.lock().unwrap(), addr, cnt) {
