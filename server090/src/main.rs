@@ -60,7 +60,7 @@ fn register_write(
 
 #[tokio::main]
 async fn main() {
-    let socket_addr = "127.0.0.1:5502".parse().unwrap();
+    let socket_addr = "0.0.0.0:5502".parse().unwrap();
 
     tokio::select! {
         _ = server_context(socket_addr) => unreachable!(),
